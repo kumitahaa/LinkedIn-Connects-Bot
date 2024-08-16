@@ -1,9 +1,6 @@
 # --------------------------------- Import -------------------------------------
 import traceback, time
-# import gspread
 from datetime import datetime
-from google.oauth2.service_account import Credentials
-# import undetected_chromedriver as uc
 from selenium import webdriver as uc
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -194,8 +191,12 @@ def send_message():
     print("Start SEND_MESSAGE of function")
     
     try:
-        send_btn = WebDriverWait(driver, 5).until(EC.presence_of_all_elements_located((By.CLASS_NAME, "msg-form__send-button artdeco-button artdeco-button--1")))[0]
-        send_btn.click()
+        time.sleep(5)
+        driver.execute_script("""document.getElementsByClassName("msg-form__send-button artdeco-button artdeco-button--1")[0].click()""")
+        # send_btn = WebDriverWait(driver, 5).until(EC.presence_of_all_elements_located((By.CLASS_NAME, "msg-form__send-button artdeco-button artdeco-button--1")))[0]
+        # send_btn.click()
+        time.sleep(5)
+        driver.execute_script("""document.getElementsByClassName("msg-overlay-bubble-header__control artdeco-button artdeco-button--circle artdeco-button--muted artdeco-button--1 artdeco-button--tertiary ember-view")[3].click()""")
     except:
         print("Can't Click Send Message Button...")
 
